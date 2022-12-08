@@ -2,7 +2,7 @@
 A look into my health data
 
 
-##Plan
+## Plan
 - Clean the data
 - Explore data for patterns
 - Use patterns to predict future activity
