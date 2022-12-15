@@ -1,4 +1,4 @@
-![rings](https://github.com/markydoug/my_apple_health/blob/caa7297873021018d0c3c7c1dbd4b36aebae60e1/rings.png)
+![rings](https://user-images.githubusercontent.com/112418599/207891130-dc7f85da-e5d8-4dec-a4e3-2587c0810972.png)
 
 # My Apple Health
 A look into my health data
