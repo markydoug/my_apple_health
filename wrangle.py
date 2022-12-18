@@ -140,3 +140,13 @@ def records_list_time_zone_fun(df):
     df = df.set_index('date').sort_index()
 
     return df
+
+def get_steps(df):
+    df = df[df['activity_type'] == 'StepCount']
+    df.value = df.value.astype(int)
+    df =df[df.source != '小米运动']
+    phone_steps = df[df['source'] == 'Marky Doug']
+    apple_watch_steps = df[df['source'] != 'Marky Doug']
+    df = phone_steps.loc[:'2021-10-28'].append(apple_watch_steps)
+
+    return df
