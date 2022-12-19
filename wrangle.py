@@ -72,6 +72,7 @@ def add_date(df):
 def add_times(df):
     df['start_time'] = df['activity_start_time'].dt.strftime('%H:%M')
     df['end_time'] = df['activity_end_time'].dt.strftime('%H:%M')
+    df['total_time'] = df['activity_end_time'] - df['activity_start_time']
     return df
 
 def records_list_time_zone_fun(df):
@@ -142,6 +143,11 @@ def records_list_time_zone_fun(df):
     return df
 
 def get_steps(df):
+    '''
+    Take in records df and returns the steps not associated with XiaoMi
+    YunDong and concats the steps from my phone and the steps from my
+    Apple Watch
+    '''
     df = df[df['activity_type'] == 'StepCount']
     df.value = df.value.astype(int)
     df =df[df.source != '小米运动']
@@ -150,3 +156,7 @@ def get_steps(df):
     df = phone_steps.loc[:'2021-10-28'].append(apple_watch_steps)
 
     return df
+
+def get_active_energy(df):
+    df = df[df['activity_type'] == 'ActiveEnergyBurned']
+    df['value'] = df['value'].astype(int)
