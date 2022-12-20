@@ -160,3 +160,12 @@ def get_steps(df):
 def get_active_energy(df):
     df = df[df['activity_type'] == 'ActiveEnergyBurned']
     df['value'] = df['value'].astype(int)
+
+    return df
+
+def get_sleep_data(df):
+    df = df[df['activity_type'] == 'SleepAnalysis']
+    df['value'] = df['value'].str.replace('HKCategoryValueSleepAnalysis', '')
+    
+    return df
+    
