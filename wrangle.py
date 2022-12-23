@@ -169,3 +169,8 @@ def get_sleep_data(df):
     
     return df
 
+def get_resting_heart_rate(df):
+    df = df[df.activity_type=='RestingHeartRate']
+    
+    return df
+
