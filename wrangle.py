@@ -174,3 +174,21 @@ def get_resting_heart_rate(df):
     
     return df
 
+def get_heart_rate(df):
+    df = df[df.activity_type=='HeartRate']
+
+    return df
+
+def get_weight(df):
+    df = df[df.activity_type=='BodyMass']
+
+    return df
+
+def get_daily_info(records):
+    df = pd.DataFrame()
+    df['steps'] = records[records.activity_type=='StepCount'].resample('D')[['value']].sum()
+    df['weight'] = records[records.activity_type=='BodyMass'].resample('d')[['value']].mean()
+    df['weight'] = df['weight'].ffill()
+    df['resting_hr'] = records[records.activity_type=='RestingHeartRate'].resample('d')[['value']].mean()
+    df['exercise_time'] = records[records.activity_type=='AppleExerciseTime'].resample('D')[['value']].sum()
+    df['calorie_intake'] = records[records.activity_type=='DietaryEnergyConsumed'].resample('D')[['value']].sum()
