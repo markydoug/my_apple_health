@@ -26,12 +26,8 @@ My initial hypothesis is that as my weight decreases biometrics will get better.
 
 * Explore data in search of drivers of churn
     * Answer the following initial question
-        * 
-        * 
+        * ?
+        * ?
 
-* Develop a model to predict the value of a house
-    * 
-    * 
-    * 
 
 * Draw conclusions
