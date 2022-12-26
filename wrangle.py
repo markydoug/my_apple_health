@@ -192,3 +192,5 @@ def get_daily_info(records):
     df['resting_hr'] = records[records.activity_type=='RestingHeartRate'].resample('d')[['value']].mean()
     df['exercise_time'] = records[records.activity_type=='AppleExerciseTime'].resample('D')[['value']].sum()
     df['calorie_intake'] = records[records.activity_type=='DietaryEnergyConsumed'].resample('D')[['value']].sum()
+
+    return df
