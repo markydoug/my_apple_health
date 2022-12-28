@@ -24,7 +24,7 @@ My initial hypothesis is that as my weight decreases biometrics will get better.
     * 
     * 
 
-* Explore data in search of drivers of churn
+* Explore data in search relationships among variables
     * Answer the following initial question
         * ?
         * ?
