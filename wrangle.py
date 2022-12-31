@@ -201,6 +201,8 @@ def get_daily_info(records):
     df['calorie_intake'] = records[records.activity_type=='DietaryEnergyConsumed'].resample('D')[['value']].sum()
     df['stand_time'] =records[records.activity_type=='AppleStandTime'].resample('D')[['value']].sum()
     df['VO2Max'] = records[records.activity_type=='VO2Max'].resample('d')[['value']].mean()
+    df['VO2Max'] = df['VO2Max'].ffill()
+    df['walking_hr'] = records[records.activity_type=='WalkingHeartRateAverage'].resample('d')[['value']].mean()
     df['sleep_time'] = in_bed_time(records)
 
     return df
