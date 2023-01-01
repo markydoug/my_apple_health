@@ -186,8 +186,9 @@ def get_weight(df):
 
 def in_bed_time(df):
     sleep_analysis = df[df.activity_type=='SleepAnalysis']
-    inbed_time = sleep_analysis[sleep_analysis.value == 'HKCategoryValueSleepAnalysisInBed']
-    return inbed_time.resample('d').total_time.sum()
+    inbed_time = sleep_analysis[sleep_analysis.value == 'HKCategoryValueSleepAnalysisInBed'].resample('d')[['total_time']].mean()
+    inbed_time['total_time'] = round(inbed_time['total_time'].dt.total_seconds()/60/60,2)
+    return inbed_time
 
 def get_daily_info(records):
     df = pd.DataFrame()
@@ -203,7 +204,7 @@ def get_daily_info(records):
     df['VO2Max'] = records[records.activity_type=='VO2Max'].resample('d')[['value']].mean()
     df['VO2Max'] = df['VO2Max'].ffill()
     df['walking_hr'] = records[records.activity_type=='WalkingHeartRateAverage'].resample('d')[['value']].mean()
-    df['sleep_time'] = in_bed_time(records)
+    df['sleep_hrs'] = in_bed_time(records)
 
     return df
 
